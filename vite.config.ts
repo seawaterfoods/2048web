@@ -5,9 +5,14 @@ import electron from 'vite-plugin-electron'
 import renderer from 'vite-plugin-electron-renderer'
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/2048/' : '/',
-  plugins: [
+export default defineConfig(({ command }) => {
+  // Electron 構建時使用相對路徑
+  const isElectronBuild = process.env.npm_lifecycle_event === 'electron:build';
+  const base = isElectronBuild ? './' : (process.env.NODE_ENV === 'production' ? '/2048/' : '/');
+  
+  return {
+    base,
+    plugins: [
     react(),
     electron([
       {
@@ -66,4 +71,5 @@ export default defineConfig({
       }
     })
   ],
+  }
 })
