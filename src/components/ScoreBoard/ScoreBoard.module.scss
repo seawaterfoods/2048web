@@ -1,0 +1,67 @@
+@use '../../styles/variables' as *;
+
+.scoreContainer {
+    display: flex;
+    gap: 5px;
+}
+
+.scoreBox {
+    background: $grid-container-bg;
+    padding: 5px 10px;
+    min-width: 60px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $text-light;
+}
+
+.scoreLabel {
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 13px;
+    color: #eee4da; // Slightly dim
+    margin-bottom: 2px;
+}
+
+.scoreValue {
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: bold;
+    color: #fff;
+    position: relative; // container for float
+    z-index: 1;
+}
+
+.scoreFloat {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: rgba(119, 110, 101, 0.9);
+    font-size: 25px;
+    font-weight: bold;
+    z-index: 10;
+    pointer-events: none;
+    animation: float-up 600ms ease-out forwards;
+
+    // Custom color for scoring? Usually dark text or specific color.
+    // 2048 uses dark text for +score.
+}
+
+@keyframes float-up {
+    0% {
+        top: 5px;
+        opacity: 1;
+        transform: scale(1);
+        color: #776e65;
+    }
+
+    100% {
+        top: -40px;
+        opacity: 0;
+        transform: scale(1.2);
+        color: #776e65;
+    }
+}

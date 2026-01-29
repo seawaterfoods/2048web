@@ -1,0 +1,129 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.tile {
+    position: absolute;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    z-index: 10;
+}
+
+.tileInner {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--tile-radius);
+    background-color: $tile-2-bg;
+    color: $text-dark;
+    font-weight: bold;
+    font-size: calc(var(--tile-size) * 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // transition removed, handled by framer-motion
+
+    @include mobile {
+        font-size: 35px;
+    }
+}
+
+// Keyframes removed as they are handled by framer-motion
+
+
+// Position classes split for X and Y to be more flexible
+@for $i from 0 through 3 {
+    .position_x_#{$i} {
+        left: calc(#{$i} * (var(--tile-size) + var(--grid-gap-val)));
+    }
+
+    .position_y_#{$i} {
+        top: calc(#{$i} * (var(--tile-size) + var(--grid-gap-val)));
+    }
+}
+
+// Color classes applied to .tileInner
+.tile_2 {
+    background-color: $tile-2-bg;
+    color: $tile-2-color;
+}
+
+.tile_4 {
+    background-color: $tile-4-bg;
+    color: $tile-4-color;
+}
+
+.tile_8 {
+    background-color: $tile-8-bg;
+    color: $text-light;
+}
+
+.tile_16 {
+    background-color: $tile-16-bg;
+    color: $text-light;
+}
+
+.tile_32 {
+    background-color: $tile-32-bg;
+    color: $text-light;
+}
+
+.tile_64 {
+    background-color: $tile-64-bg;
+    color: $text-light;
+}
+
+.tile_128 {
+    background-color: $tile-128-bg;
+    color: $text-light;
+    font-size: 45px;
+
+    @include mobile {
+        font-size: 25px;
+    }
+}
+
+.tile_256 {
+    background-color: $tile-256-bg;
+    color: $text-light;
+    font-size: 45px;
+
+    @include mobile {
+        font-size: 25px;
+    }
+}
+
+.tile_512 {
+    background-color: $tile-512-bg;
+    color: $text-light;
+    font-size: 45px;
+
+    @include mobile {
+        font-size: 25px;
+    }
+}
+
+.tile_1024 {
+    background-color: $tile-1024-bg;
+    color: $text-light;
+    font-size: 35px;
+
+    @include mobile {
+        font-size: 15px;
+    }
+}
+
+.tile_2048 {
+    background-color: $tile-2048-bg;
+    color: $text-light;
+    font-size: 35px;
+
+    @include mobile {
+        font-size: 15px;
+    }
+}
+
+.tile_super {
+    background-color: $tile-super-bg;
+    color: $text-light;
+    font-size: 30px;
+}

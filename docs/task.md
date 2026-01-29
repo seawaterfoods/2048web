@@ -1,0 +1,9 @@
+- [x] Create Language Context and Translations <!-- id: 24 -->
+- [x] Implement Language Toggle UI in Layout <!-- id: 25 -->
+- [x] Translate all UI strings in components <!-- id: 26 -->
+- [x] Verify persistence and responsiveness <!-- id: 27 -->
+- [x] Update documentation <!-- id: 28 -->
+    - [ ] Update project_overview.md <!-- id: 29 -->
+    - [ ] Update development_plan.md <!-- id: 30 -->
+    - [ ] Update game_walkthrough.md <!-- id: 31 -->
+    - [ ] Consolidate artifact plans into docs/ <!-- id: 32 -->

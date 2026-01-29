@@ -1,0 +1,43 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:root {
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: $text-dark;
+    background-color: $bg-color;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none; // Prevent selection text
+}
+
+body {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    overflow: hidden;
+    overscroll-behavior-y: contain; // Prevent pull-to-refresh
+    touch-action: none; // Prevent default gestures (already handled by useTouchGestures)
+}
+
+#root {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}

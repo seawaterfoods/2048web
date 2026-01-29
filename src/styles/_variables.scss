@@ -1,0 +1,84 @@
+@use "sass:math";
+
+:root {
+    --bg-color: #faf8ef;
+    --grid-container-bg: #bbada0;
+    --empty-cell-bg: #cdc1b4;
+    --text-dark: #776e65;
+    --text-light: #f9f6f2;
+
+    // Dynamic Grid Variables
+    --grid-max-size: 500px;
+    --grid-padding: 15px;
+    --grid-gap-val: 15px;
+    // Ensuring grid size is never too small to break the layout, but shrinks on small viewports.
+    --grid-size: min(var(--grid-max-size), 100vw - 40px, clamp(280px, 100vh - 280px, 500px));
+
+    // Explicitly derive pixel values for positioning to avoid var conflict in calc if any
+    --tile-size: calc((var(--grid-size) - (var(--grid-padding) * 2) - (var(--grid-gap-val) * 3)) / 4);
+    --transition-speed: 200ms;
+    --tile-radius: 4px;
+}
+
+[data-theme='dark'] {
+    --bg-color: #1a1a1a;
+    --grid-container-bg: #444;
+    --empty-cell-bg: #555;
+    --text-dark: #ddd;
+    --text-light: #fff;
+}
+
+@media (max-width: 520px) {
+    :root {
+        --grid-max-size: 300px;
+        --grid-padding: 10px;
+        --grid-gap-val: 10px;
+    }
+}
+
+// Colors & Layout Aliases
+$bg-color: var(--bg-color);
+$grid-container-bg: var(--grid-container-bg);
+$empty-cell-bg: var(--empty-cell-bg);
+
+$text-dark: var(--text-dark);
+$text-light: var(--text-light);
+
+$grid-size: var(--grid-size);
+$grid-gap: var(--grid-gap-val);
+$grid-padding: var(--grid-padding);
+$tile-size: var(--tile-size);
+
+// Tile Colors (Static for now, but could be themes too)
+$tile-2-bg: #eee4da;
+$tile-2-color: #776e65; // keep static ref to avoid var complexity in loops if needed
+
+$tile-4-bg: #ede0c8;
+$tile-4-color: #776e65;
+
+$tile-8-bg: #f2b179;
+$tile-16-bg: #f59563;
+$tile-32-bg: #f67c5f;
+$tile-64-bg: #f65e3b;
+
+$tile-128-bg: #edcf72;
+$tile-256-bg: #edcc61;
+$tile-512-bg: #edc850;
+$tile-1024-bg: #edc53f;
+$tile-2048-bg: #edc22e;
+
+$tile-super-bg: #3c3a32; // > 2048
+
+// Dimensions
+$grid-size: 500px;
+$grid-gap: 15px;
+$tile-size: math.div($grid-size - ($grid-gap * 5), 4);
+$tile-radius: 3px;
+
+// Mobile Dimensions
+$grid-size-mobile: 300px;
+$grid-gap-mobile: 10px;
+$tile-size-mobile: math.div($grid-size-mobile - ($grid-gap-mobile * 5), 4);
+
+// Transition
+$transition-speed: 100ms;
