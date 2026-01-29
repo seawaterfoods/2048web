@@ -10,7 +10,7 @@ echo "=================================="
 
 # 設定路徑
 PORTFOLIO_PATH="/Users/joewu/AiProject/seawaterfoods.github.io"
-GAME_DIR="2048"
+GAME_DIR="source/2048"
 
 # 1. 建置專案
 echo ""
@@ -38,8 +38,16 @@ if git diff --staged --quiet; then
   echo "ℹ️  No changes to deploy"
 else
   git commit -m "Update 2048 game - $(date '+%Y-%m-%d %H:%M:%S')"
+  
+  # 生成 Hexo 靜態檔案
+  echo "🔄 Generating Hexo static files..."
+  npm run build
+  
+  git add -A
+  git commit -m "Update public files - $(date '+%Y-%m-%d %H:%M:%S')" || echo "ℹ️  No additional changes"
+  
   git push origin master
   echo ""
   echo "✅ Deployment complete!"
-  echo "🌐 Visit: https://seawaterfoods.github.io/2048/"
+  echo "🌐 Visit: https://seawaterfoods.github.io/seawaterfoods/2048/"
 fi

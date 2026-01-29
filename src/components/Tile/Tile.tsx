@@ -11,33 +11,13 @@ interface TileProps {
 export const Tile: React.FC<TileProps> = ({ tile }) => {
     const [showParticles, setShowParticles] = useState(false);
 
-    // Trigger particles on merge
     useEffect(() => {
         if (tile.mergedFrom) {
             setShowParticles(true);
         }
     }, [tile.mergedFrom]);
 
-    // Determine color class
     const valueClass = tile.value <= 2048 ? styles[`tile_${tile.value}`] : styles.tile_super;
-
-    // Calculate position based on grid logic
-    // We should ideally get these from CSS variables, but for now we'll match the SCSS logic
-    // Grid size: 500, Gap: 15 -> Tile: 106.25
-    // Actually, let's use the actual values. 
-    // Is there a better way? We can use the CSS classes but Framer Motion layout is struggling.
-    // Let's use a simpler approach: use the CSS classes for INITIAL position, then layout for the rest?
-    // No, the subagent showed it's broken.
-
-    // Let's use CSS variables for the math to keep it responsive-ish or just match the classes.
-    // Actually, if we use 'layout' and 'positionClass', Framer Motion should just work.
-    // The reason it might be broken is the conflict between 'transform' in CSS and Framer's internal transform.
-    // But I changed it to 'left/top'.
-
-    // Wait! I know why it's broken! 
-    // If I use 'left' and 'top' in the CSS class, and 'layout' is on, 
-    // Framer Motion will calculate the bounding box. 
-    // If the classes are being swapped, the element's position changes in the domestic pool.
 
     return (
         <motion.div

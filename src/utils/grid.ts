@@ -34,7 +34,7 @@ export const areGridsEqual = (grid1: Grid, grid2: Grid): boolean => {
             if (grid1[y][x]?.value !== grid2[y][x]?.value) return false;
         }
     }
-    return true; // Simplified check, might need deeper check for IDs if important
+    return true;
 };
 
 export const cloneGrid = (grid: Grid): Grid => {
