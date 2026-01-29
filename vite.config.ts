@@ -6,7 +6,7 @@ import renderer from 'vite-plugin-electron-renderer'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/2048/',
+  base: process.env.NODE_ENV === 'production' ? '/2048/' : '/',
   plugins: [
     react(),
     electron([
